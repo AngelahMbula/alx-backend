@@ -27,10 +27,15 @@ babel = Babel(app)
 @babel.localeselector
 def get_locale() -> str:
     """Gets locale from request object."""
-    locale = request.args.get('locale', '').strip()
-    if locale and locale in Config.LANGUAGES:
-        return locale
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+    options = [
+        request.args.get('locale', '').strip(),
+        g.user.get('locale', None) if g.user else None,
+        request.accept_languages.best_match(app.config['LANGUAGES']),
+        Config.BABEL_DEFAULT_LOCALE
+    ]
+    for locale in options:
+        if locale and locale in Config.LANGUAGES:
+            return locale
 
 
 users = {
@@ -61,7 +66,7 @@ def before_request():
 @app.route('/')
 def index() -> str:
     """Renders a basic html template."""
-    return render_template('5-index.html')
+    return render_template('6-index.html')
 
 
 if __name__ == '__main__':
