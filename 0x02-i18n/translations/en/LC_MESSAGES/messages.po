@@ -28,3 +28,18 @@ msgstr "Welcome to Holberton"
 #: templates/7-index.html:10 templates/index.html:10
 msgid "home_header"
 msgstr "Hello world!"
+
+#: templates/5-index.html:12 templates/6-index.html:12
+#: templates/7-index.html:12 templates/index.html:12
+msgid "logged_in_as"
+msgstr "You are logged in as %(username)s."
+
+#: templates/5-index.html:14 templates/6-index.html:14
+#: templates/7-index.html:14 templates/index.html:14
+msgid "not_logged_in"
+msgstr "You are not logged in."
+
+#: templates/index.html:16
+msgid "current_time_is"
+msgstr "The current time is %(current_time)s."
+
